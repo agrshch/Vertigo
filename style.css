@@ -1,0 +1,28 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background:grey;
+}
+canvas {
+  position:absolute;
+  display: block;
+  margin: 0 auto;
+  margin-top:0;
+}
+
+button, input, p {
+  z-index: 10;
+}
+
+
+
+#hydraCanvas {
+  position:absolute;
+  z-index: -20;
+  visibility: hidden;
+}
+
+#defaultCanvas0 {
+  z-index: -10;
+  visibility: hidden;
+}
