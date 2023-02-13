@@ -1,16 +1,13 @@
+p5.disableFriendlyErrors = true;
+
 const sketch = function(p){
   p.song;
-  // p.sliderVolume;
-  // p.sliderProgress;
-  // p.button;
-  // p.clock;
-  let framesNum = 30;
+  let framesNum = 20;
   p.PICS = [];
   for (let i = 0; i < framesNum; i++) p.PICS.push({img: null, ms:null, sec:null});
   window.addEventListener('DOMContentLoaded', ()=> getTimings(p.PICS));
   p.current = {img: null};
 
-  // p.myCanvas;
   p.ready = false;
 
   p.preload = function (){
@@ -20,7 +17,6 @@ const sketch = function(p){
   }
 
   p.setup = function(){
-    // p.myCanvas =
     p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
     p.imageMode(p.CENTER);
 
@@ -57,45 +53,7 @@ const sketch = function(p){
     if(!p.ready)return;
 
     if(p.frameCount === 1){
-      let hydra = new Hydra({canvas: document.getElementById("#hydraCanvas")});
-      console.log(myp5.ready)
-      setResolution(1920,1080);
-      a.setSmooth( smooth = 0.6 )
-      let SSS = (v=1) => a.fft[1]*v;
-
-      s0.init({src:p.canvas});
-
-      // s0.init({src: document.getElementById("#defaultCanvas0")});
-
-      // imgEl = document.createElement('img');
-      // imgEl.crossOrigin = 'anonymous';
-      // imgEl.src = 'https://www-users.york.ac.uk/~tas509/cors/Boris_Johnson_AP.jpg'
-      // s0.init({src: imgEl});
-
-      console.log(s0);
-
-      src(s0)
-        .mult
-        (
-          src(s0)
-          .thresh( ()=> SSS(1.5) )
-          .luma( 0.9, 0 )
-        )
-        .out(o1)
-
-      src(o0)
-        .modulateHue
-          (
-            src(o0)
-            .scale(1.3,2,1)
-          ,4)
-        .layer
-        (
-          src(o1)
-          .luma( 0.00001,0)
-        )
-        .out()
-
+     doTheHydra(p);
     }
 
     let t = p.song.currentTime();
@@ -107,74 +65,3 @@ const sketch = function(p){
 }
 
 this.myp5 = new p5(sketch);
-
-
-////////////////////////////// HYDRA /////////////////
-
-
-
-//   let hydra = new Hydra({canvas: document.getElementById("#hydraCanvas")});
-// console.log(myp5.ready)
-//   setResolution(1920,1080);
-//   a.setSmooth( smooth = 0.6 )
-//   let SSS = (v=1) => a.fft[1]*v;
-
-  // s0.init({src: document.getElementById("#defaultCanvas0")});
-  // console.log(s0);
-
-
-
-
-  //
-  // imgEl = document.createElement('img');
-  // imgEl.crossOrigin = 'anonymous';
-  // imgEl.src = 'https://www-users.york.ac.uk/~tas509/cors/Boris_Johnson_AP.jpg'
-  // s0.init({src: imgEl});
-  //
-  //
-  // src(s0)
-  //   .mult
-  //   (
-  //     src(s0)
-  //     .thresh( ()=> SSS(1.5) )
-  //     .luma( 0.9, 0 )
-  //   )
-  //   .out(o1)
-  //
-  // src(o0)
-  //   .modulateHue
-  //     (
-  //       src(o0)
-  //       .scale(1.3,2,1)
-  //     ,4)
-  //   .layer
-  //   (
-  //     src(o1)
-  //     .luma( 0.00001,0)
-  //   )
-  //   .out()
-
-
-
-
-
-
-
-
-
-
-// function draw() {
-  // put the hydra onto a buffer
-  // pg.push();
-  // pg.image(select("#hydraCanvas"), 0, 0, pg.width, pg.height);
-  // pg.pop();
-
-
-
-
-  // put the hydra onto a buffer
-  // s.push()
-    // image(select("#hydraCanvas"), 0, 0);
-  // s.pop()
-
-// }
